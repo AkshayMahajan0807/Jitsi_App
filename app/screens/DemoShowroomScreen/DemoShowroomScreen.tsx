@@ -86,6 +86,7 @@ const ShowroomListItem = Platform.select({ web: WebListItem, default: NativeList
 
 export const DemoShowroomScreen: FC<DemoTabScreenProps<"DemoShowroom">> =
   function DemoShowroomScreen(_props) {
+    const { navigation } = _props
     const [open, setOpen] = useState(false)
     const timeout = useRef<ReturnType<typeof setTimeout>>()
     const drawerRef = useRef<DrawerLayout>()
@@ -94,6 +95,11 @@ export const DemoShowroomScreen: FC<DemoTabScreenProps<"DemoShowroom">> =
     const progress = useSharedValue(0)
     const route = useRoute<RouteProp<DemoTabParamList, "DemoShowroom">>()
     const params = route.params
+    const onClickTONavigate = () => {
+      console.log("on click to navigation ")
+
+      navigation.navigate("Home")
+    }
 
     // handle Web links
     React.useEffect(() => {
@@ -210,7 +216,11 @@ export const DemoShowroomScreen: FC<DemoTabScreenProps<"DemoShowroom">> =
             renderSectionFooter={() => <View style={$demoUseCasesSpacer} />}
             ListHeaderComponent={
               <View style={$heading}>
-                <Text preset="heading" tx="demoShowroomScreen.jumpStart" />
+                <Text
+                  preset="heading"
+                  tx="demoShowroomScreen.jumpStart"
+                  onPress={() => onClickTONavigate()}
+                />
               </View>
             }
             onScrollToIndexFailed={scrollToIndexFailed}

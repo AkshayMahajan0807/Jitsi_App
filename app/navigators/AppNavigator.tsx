@@ -20,6 +20,8 @@ import { useStores } from "../models" // @demo remove-current-line
 import { DemoNavigator, DemoTabParamList } from "./DemoNavigator" // @demo remove-current-line
 import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
 import { colors } from "app/theme"
+import Home from "app/screens/Jitsi/Home"
+import Meeting from "app/screens/Jitsi/Meeting"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -38,6 +40,8 @@ export type AppStackParamList = {
   Welcome: undefined
   Login: undefined // @demo remove-current-line
   Demo: NavigatorScreenParams<DemoTabParamList> // @demo remove-current-line
+  Home: undefined
+  Meeting: undefined
   // 🔥 Your screens go here
   // IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
 }
@@ -75,6 +79,8 @@ const AppStack = observer(function AppStack() {
           <Stack.Screen name="Welcome" component={Screens.WelcomeScreen} />
           {/* @demo remove-block-start */}
           <Stack.Screen name="Demo" component={DemoNavigator} />
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Meeting" component={Meeting} />
         </>
       ) : (
         <>
